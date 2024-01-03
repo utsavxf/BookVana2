@@ -371,6 +371,30 @@ export const getUserPosts = (id) => async (dispatch) => {
          payload: error.response.data.message,
       });
    }
+} 
+export const getAllPosts = (title=" ") => async (dispatch) => {
+   try {
+     
+      
+      dispatch({
+         type: "allPostsRequest",
+      });
+
+      const { data } = await axios.get(`/user/allbooks?title=${title}`);
+      dispatch({
+         type: "allPostsSuccess",
+         payload: data.books,
+      });
+
+      // console.log(data.books)
+   } catch (error) {
+      // console.log(error);
+
+      dispatch({
+         type: "allPostsFailure",
+         payload: error.response.data.message,
+      });
+   }
 }
 export const getUserProfile = (id) => async (dispatch) => {
    try {
@@ -392,6 +416,74 @@ export const getUserProfile = (id) => async (dispatch) => {
       });
    }
 }
+export const getSingleBook = (id) => async (dispatch) => {
+   try {
+      dispatch({
+         type: "singleBookRequest",
+      });
+
+      const { data } = await axios.get(`/book/getABook/${id}`);
+      // console.log(data.book);
+      
+      dispatch({
+         type: "singleBookSuccess",
+         payload: data.book,
+      });
+   } catch (error) {
+      console.log(error);
+
+      dispatch({
+         type: "singleBookFailure",
+         payload: error.response.data.message,
+      });
+   }
+}
+export const getRecentlyAddedBook = (id) => async (dispatch) => {
+   try {
+      dispatch({
+         type: "recentlyAddedPostsRequest",
+      });
+
+      const { data } = await axios.get(`/user/recentBooks`);
+      // console.log(data.book);
+      
+      dispatch({
+         type: "recentlyAddedPostsSuccess",
+         payload: data.book,
+      });
+   } catch (error) {
+      console.log(error);
+
+      dispatch({
+         type: "recentlyAddedPostsFailure",
+         payload: error.response.data.message,
+      });
+   }
+}
+export const getTrendingBook = (id) => async (dispatch) => {
+   try {
+      dispatch({
+         type: "trendingPostsRequest",
+      });
+
+      const { data } = await axios.get(`/user/trendingBooks`);
+      // console.log(data.book);
+      
+      dispatch({
+         type: "trendingPostsSuccess",
+         payload: data.book,
+      });
+   } catch (error) {
+      console.log(error);
+
+      dispatch({
+         type: "trendingPostsFailure",
+         payload: error.response.data.message,
+      });
+   }
+}
+
+
 
 export const followAndUnfollowUser = (id) => async (dispatch) => {
    try {

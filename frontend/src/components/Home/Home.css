@@ -1,24 +1,66 @@
 .home {
     box-sizing: border-box;
-    display: grid;
-    grid-template-columns: 1fr 400px;
-    height: 100vh;
+    display: flex;
+    /* grid-template-columns: 1fr 400px; */
+
+    /* height: 91.93vh; */
+    width: 100%;
+    /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_1bQ9kbAjPXP4oy4eWOS5eCilGrpVaxBLRcG4E7rfozA9Q2yNJN6lC1wi0CQoHB_fGw&usqp=CAU'); */
+   
   }
+
+  .background{
+      background: rgba(0, 0, 0, 0.7) url('https://media.istockphoto.com/id/1021326350/photo/baby-blue-hand-painted-backdrop.jpg?s=612x612&w=0&k=20&c=qYyu2uowh4LBNK73v5GsOoNhPshNEpRobeNyPz8IoDU=');
+      /* background: rgba(0, 0, 0, 0.7) url('https://media.istockphoto.com/id/1414659644/photo/blue-background-blue-substrate-light-blue-background-blue-cloudless-sky.jpg?s=612x612&w=0&k=20&c=nKL6Rs-QpZlQlP76bWqhOCauTbla62IN4QXZp12csl4='); */
+      background-size: cover;
+      background-blend-mode: darken;
+  }
+
+  .background2{
+    background: rgba(0, 0, 0, 0.7) url('https://media.istockphoto.com/id/476111806/vector/rose-quartz-and-serenity-minimal-modern-graphic-art-stock-background.jpg?s=612x612&w=0&k=20&c=C9PfPALwzc1-fChIQ2NSpCkA1b4vi9odYECNumGBlEA=');
+    /* background: rgba(0, 0, 0, 0.7) url('https://media.istockphoto.com/id/1414659644/photo/blue-background-blue-substrate-light-blue-background-blue-cloudless-sky.jpg?s=612x612&w=0&k=20&c=nKL6Rs-QpZlQlP76bWqhOCauTbla62IN4QXZp12csl4='); */
+    background-size: cover;
+    background-blend-mode: darken;
+}
   
   .homeleft {
-    background-image: linear-gradient(to right, #fff5bc, #cec1ff);
-  
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2vmax;
-    box-sizing: border-box;
+    /* background: rgb(233,243,162);
+    background: linear-gradient(121deg, rgba(233,243,162,1) 32%, rgba(246,196,240,1) 58%);
+     */
+    background-color: #E9F1FA;
+    /* background-color:hsl(210, 71%, 80%); */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start; /* Horizontally center items */
+  padding: 2vmax;
+  box-sizing: border-box;
+  width: 84%;
   }
+
+
+
+  .showingBooks {
+    /* background-color: #E9F1FA; */
+    
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0vmax;
+    box-sizing: border-box;
+    width: 100%;
+    /* overflow: hidden; */
+    /* overflow-y: auto; */
+}
   .homeright {
     padding: 2vmax;
     box-sizing: border-box;
-    overflow-y: auto;
+    /* height: 100vh; */
+    /* overflow-y: auto; */
+    width: 16%;
+    /* background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%); */
+    background-color: #d1e0f0;
   }
   
   .homeUser {

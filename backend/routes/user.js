@@ -596,36 +596,91 @@ router.get("/userbooks/:id",isAuthenticated,async(req,res)=>{
     
 })
 
-
-
-
-
-
-
-
-//get books of all the users,or rather I should type get all the books   ,you know what you want or you didn't ,now just use chatgpt for the code be productive don't be slow,logic you have syntax is something you will learn throughput
-router.get("/getAllbooks",isAuthenticated,async(req,res)=>{
+//to get all books except that of the user himself
+router.get('/allbooks/',isAuthenticated,async(req,res)=>{
   try {
     
-       // Query the database for all books
-       const books = await Book.find({}, 'title author owner').populate({
-        path: 'owner',
-        select: 'name', // Select the 'username' field from the User model
-      });
+    const userId = req.user._id;
 
-       // Return the result as JSON
-       res.status(200).json({
-         message: 'All books with name, author, and owner',
-         books,
-       });
+   const user=await User.findById(req.user._id);
    
+   if(!user){
+    return res.status(404).json({
+      success:false,
+      message:"User does not exist",
+    })
+  }
 
+
+  
+  const books = await Book.find({
+    owner: { $ne: userId },
+    title: { $regex: req.query.title, $options: 'i' }
+  }).populate("likes owner comments.user");
+  
+ 
+
+  // console.log(books);
+  
+  res.status(201).json({message:"all the books",books})
 
 
   } catch (error) {
-    res.status(500).json({message:"error while retreivinng all posts"})
+    console.log(error);
+    
+    console.log('unable to fetch all books');
+    res.status(500).json({message:"unable to fetch all books"})
   }
 })
+
+//get 4 most recently added books
+router.get('/recentBooks', async (req, res) => {
+  try {
+    const recentlyAddedBooks = await Book.find()
+      .sort({ createdAt: -1 }) // Sort in descending order based on createdAt
+      .limit(4) // Limit the result to 4 books
+      .populate("owner likes comments.user"); 
+    res.status(200).json({
+      success: true,
+      message: "Four most recently added books",
+      book: recentlyAddedBooks,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Error while fetching recently added books",
+    });
+  }
+});
+router.get('/trendingbooks', async (req, res) => {
+  try {
+    const mostLikedBooks = await Book.find()
+    .sort({ likes: -1 }) // Sort in descending order based on likes
+    .limit(4) // Limit the result to 4 books
+    .populate("owner likes comments.user");
+    res.status(200).json({
+    success: true,
+    message: "Four books with the most likes",
+    book: mostLikedBooks,
+  });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Error while fetching trending books",
+    });
+  }
+});
+
+
+
+
+
+
+
+
+
 
 
 

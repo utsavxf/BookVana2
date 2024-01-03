@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import "./Account.css"
 import Book from '../Book/Book'
+// import Book1 from '../Book1/Book1'
 import {useDispatch, useSelector} from "react-redux"
-import { deleteMyProfile, getMyPosts, loadUser, logoutUser } from '../../Actions/User';
+import { deleteMyProfile, getAllPosts, getMyPosts, loadUser, logoutUser } from '../../Actions/User';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import Loader from '../Loader/Loader';
 import { Avatar, Button, Dialog, Typography } from '@mui/material'
 import { Link } from 'react-router-dom';
 import User from '../User/User';
+import Transition from '../Transition';
 
 
 const Account = () => {
@@ -40,6 +42,8 @@ const Account = () => {
 
 
     useEffect(() => {
+   
+
       if (user) {
         dispatch(getMyPosts());
       }
@@ -72,13 +76,20 @@ const Account = () => {
     ) :(
      
       <div className="account">
-        <div className="accountleft">
+        <Transition/>
+        <div className="accountleft dark:bg-darkbg1" style={{display:"flex"}}>
           {posts && posts.length > 0 ? (
             posts.map((post) => (
               <Book
               key={post._id}
               bookId={post._id}
               title={post.title}
+              author={post.author}
+              description={post.description}
+              price={post.price}
+              category={post.category}
+              language={post.language}
+              binding={post.binding}
               bookImage={post.image.url}
               likes={post.likes}
               comments={post.comments}
@@ -90,11 +101,11 @@ const Account = () => {
               />
             ))
           ) : (
-           <Typography variant="h6">You have not made any post</Typography>
+           <Typography variant="h6" style={{marginLeft:'390px'}}>You have not made any post</Typography>
           )
        } 
         </div>
-        <div className="accountright">
+        <div className="accountright dark:bg-darkright">
           <Avatar
             src={user.avatar.url}
             sx={{ height: "8vmax", width: "8vmax" }}

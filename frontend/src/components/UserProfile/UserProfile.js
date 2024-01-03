@@ -8,6 +8,7 @@ import {
   followAndUnfollowUser,
   getUserPosts,
   getUserProfile,
+  loadUser,
 } from "../../Actions/User";
 import Loader from "../Loader/Loader";
 import Book from '../Book/Book'
@@ -19,7 +20,7 @@ const UserProfile = () => {
   const {
     user,
     loading: userLoading,
-    error: userError,
+    error: userError, 
   } = useSelector((state) => state.userProfile); //ye user vo waala hai jiski profile humne kholi hai 
 
   const { user: me } = useSelector((state) => state.user); //me hai login waala user
@@ -33,6 +34,7 @@ const UserProfile = () => {
   const params = useParams();
   const [followersToggle, setFollowersToggle] = useState(false);
   const [followingToggle, setFollowingToggle] = useState(false);
+  const [ContactToggle, setContactToggle] = useState(false);
   const [following, setFollowing] = useState(false);
   const [myProfile, setMyProfile] = useState(false);
 
@@ -40,10 +42,12 @@ const UserProfile = () => {
     setFollowing(!following);
     await dispatch(followAndUnfollowUser(user._id));
     dispatch(getUserProfile(params.id));
+    dispatch(loadUser())
   };
 
   useEffect(() => {
     dispatch(getUserPosts(params.id));
+    // dispatch(loadUser())
     dispatch(getUserProfile(params.id));
     console.log(books)
   }, [dispatch, params.id]);
@@ -92,15 +96,23 @@ const UserProfile = () => {
         {books && books.length > 0 ? (
           books.map((post) => (
             <Book
-              key={post._id}
-              postId={post._id}
-              caption={post.caption}
-              postImage={post.image.url}
-              likes={post.likes}
-              comments={post.comments}
-              ownerImage={post.owner.avatar.url}
-              ownerName={post.owner.name}
-              ownerId={post.owner._id}
+            key={post._id}
+            bookId={post._id}
+            title={post.title}
+            author={post.author}
+            description={post.description}
+            price={post.price}
+            category={post.category}
+            language={post.language}
+            binding={post.binding}
+            bookImage={post.image.url}
+            likes={post.likes}
+            comments={post.comments}
+            ownerImage={post.owner.avatar.url}
+            ownerName={post.owner.name}
+            ownerId={post.owner._id}
+            isDelete={true}
+            isAccount={true}
             />
           ))
         ) : (
@@ -146,8 +158,17 @@ const UserProfile = () => {
                 {following ? "Unfollow" : "Follow"}
               </Button>
             )}
+            <Button
+                variant="contained"
+                style={{ background:'green',position:'relative',top:"30px" }}
+                onClick={()=>{setContactToggle(!ContactToggle)}}
+                
+              >
+                Contact
+              </Button>
           </>
         )}
+        {/* Followers */}
         <Dialog
           open={followersToggle}
           onClose={() => setFollowersToggle(!followersToggle)}
@@ -171,7 +192,28 @@ const UserProfile = () => {
             )}
           </div>
         </Dialog>
-
+        {/* Contact Details */}
+        <Dialog
+          open={ContactToggle}
+          onClose={() => setContactToggle(!ContactToggle)}
+        >
+          <div className="DialogBox" style={{height:'100px'}}>
+            {
+              user ?
+               <>
+               <Typography variant="h4">Contact Details</Typography>
+            
+            <div>Email: {user.email} </div>
+            <div>Phone.No:{user.phone} </div>
+               </>:
+               <div>user not loaded till now</div>
+            }
+            
+           
+          </div>
+        </Dialog>
+        
+         {/*  */}
         <Dialog
           open={followingToggle}
           onClose={() => setFollowingToggle(!followingToggle)}

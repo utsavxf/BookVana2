@@ -1,0 +1,92 @@
+.searchBookmain{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.sbfirst{
+  /* height: 100px; */
+  width: 100%;
+  background-color: #b6cfddd9;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.sbfirst input{
+  height: 36px;
+  margin: 16px;
+  width: 34%;
+  border-radius: 18px;
+  border: none;
+  padding: 5px;
+  font-size: 19px;
+}
+
+.sbfirst button{
+  font-size: 25px;
+  border-radius: 22px;
+  border: none;
+  cursor: pointer;
+}
+
+.sbsecond{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+
+}
+
+.sbleft1{
+  width: 16%;
+  /* height: 100vh; */
+  background-color: #d1e0f0;
+
+}
+
+.sbright{
+  width: 84%;
+  /* max-width: 75%; */
+  /* height: 100vh; */
+  background-color: #E9F1FA;
+  display: flex;
+  flex-wrap: wrap;
+  /* flex-direction: column; */
+  justify-content: flex-start; /* Horizontally center items */
+  align-content: flex-start;
+  padding: 2vmax;
+  box-sizing: border-box;
+  /* overflow-x: auto; */
+  /* flex: 0 0 calc(25% - 20px); */
+}
+
+.sbright > * {
+  /* flex: 0 0 25%; Initially take 25% of the width, won't shrink or grow */
+  margin: 15px; /* Adjust margin between items */
+  /* min-width: calc(25% - 10px); Adjust minimum width for each book */
+}
+
+.heading1{
+  font-size: 20px;
+  padding: 10px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: capitalize;
+}
+.range-filter{
+  display: flex;
+  flex-direction: column;
+}
+
+.priceRange{
+  font-size: 20px;
+}
+
+.deatailSb{
+  /* padding: 10px; */
+  position: relative;
+  left: 10px;
+  margin-top: 10px;
+  /* bottom: 10px; */
+}

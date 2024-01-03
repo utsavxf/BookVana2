@@ -48,12 +48,12 @@ router.post('/createPost',isAuthenticated,async(req,res)=>{
         public_id: myCloud.public_id,
         url: myCloud.secure_url,
       },
-      author:"b",
-      description:"j",
-      category:"j",
-      price:0,
-      language:"j",
-      binding:"h",
+      author:req.body.author,
+      description:req.body.description,
+      category:req.body.category,
+      price:req.body.price,
+      language:req.body.language,
+      binding:req.body.binding,
       owner: req.user._id,
     };
 
@@ -68,6 +68,47 @@ router.post('/createPost',isAuthenticated,async(req,res)=>{
       success: true,
       message: "Book Created",
     });
+  } catch (error) {
+    console.log(error);
+    
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+})
+router.put('/updatePost/:id',isAuthenticated,async(req,res)=>{
+  try {
+  
+    const book = await Book.findById(req.params.id);
+
+    if (!book) {
+      return res.status(404).json({
+        success: false,
+        message: "Book not found",
+      });
+    }
+
+    if (book.owner.toString() !== req.user._id.toString()) {
+      return res.status(401).json({
+        success: false,
+        message: "Unauthorized",
+      });
+    }
+
+    book.title = req.body.title;
+    book.author = req.body.author;
+    book.description = req.body.description;
+    book.language = req.body.language;
+    book.category = req.body.category;
+    book.price = req.body.price;
+    book.binding = req.body.binding;
+    await book.save();
+    res.status(200).json({
+      success: true,
+      message: "Book updated",
+    });
+
   } catch (error) {
     console.log(error);
     
@@ -189,8 +230,40 @@ router.get("/:id",isAuthenticated,async(req,res)=>{
    } catch (error) {
     console.log(error);
     
-     res.status(500).json({message:"error while liking and unliking a post"})
+     res.status(500).json({message:" error hi error error while liking and unliking a post"})
    }              
+})
+
+//get all the details about a particular book from it's id
+router.get('/getABook/:id',isAuthenticated,async(req,res)=>{
+  try {
+
+    const bookId = req.params.id;
+
+    // Fetch the book document from the database
+    const book = await Book.findById(bookId).populate("owner likes comments.user");
+
+    if (!book) {
+      // Return an error response if the book doesn't exist
+      return res.status(404).json({
+        success: false,
+        message: "Book not found",
+      });
+    }
+
+    return res.status(200).json({
+      success:"true",
+      book:book
+    })
+
+    
+  } catch (error) {
+    console.log('error while getting details of a particular book');
+    console.log(error);
+    
+    res.status(500).json({message:"error while getting details"})
+    
+  }
 })
 
 //add a comment to a book /or update already existing comment
@@ -206,30 +279,30 @@ router.put("/comment/:id",isAuthenticated,async(req,res)=>{
     return res.status(400).json({success:false,message:"Book not Found"})
   }
 
-  let commentIndex=-1;
+//   let commentIndex=-1;
 
-  //Checking if comment already exists
-  book.comments.forEach((item,index)=>{
-     if(item.user.toString()===user.toString()){
-      commentIndex=index;
-     }
-  })
+//   //Checking if comment already exists
+//   book.comments.forEach((item,index)=>{
+//      if(item.user.toString()===user.toString()){
+//       commentIndex=index;
+//      }
+//   })
 
-if(commentIndex!==-1){
+// if(commentIndex!==-1){
 
-   console.log('iske andar to aagay');
+//    console.log('iske andar to aagay');
    
 
- book.comments[commentIndex].comment=req.body.comment;
+//  book.comments[commentIndex].comment=req.body.comment;
 
- await book.save();
- return res.status(200).json({
-  success:true,
-  message:"Comment Updated",
- })
+//  await book.save();
+//  return res.status(200).json({
+//   success:true,
+//   message:"Comment Updated",
+//  })
 
-}
-  else{
+// }
+  
 
     book.comments.push({
       user:user,
@@ -242,7 +315,7 @@ if(commentIndex!==-1){
   message:"comment added"
 
  })
-  }
+  
 
 
  
@@ -256,6 +329,8 @@ if(commentIndex!==-1){
 //delete a particular comment (2 cases will be there)
 router.delete("/deleteComment/:id",isAuthenticated,async(req,res)=>{
    try {
+    // console.log(req.body.commentId);
+
      const book=await Book.findById(req.params.id);
      
      if(!book){
@@ -274,6 +349,8 @@ router.delete("/deleteComment/:id",isAuthenticated,async(req,res)=>{
   
        
       if(req.body.commentId==undefined){
+        
+        
         return res.status(400).json({
           success:false,
           message:"Comment Id is required"
@@ -317,7 +394,7 @@ router.delete("/deleteComment/:id",isAuthenticated,async(req,res)=>{
      }
 
    } catch (error) {
-    // console.log('hello');
+    console.log(error);
     
       res.status(500).json({
         success:false,
@@ -325,6 +402,7 @@ router.delete("/deleteComment/:id",isAuthenticated,async(req,res)=>{
       })
    }
 })
+
 
 
 

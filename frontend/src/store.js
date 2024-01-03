@@ -1,7 +1,7 @@
 import { getDefaultMiddleware } from '@reduxjs/toolkit';
 import {configureStore} from "@reduxjs/toolkit";
-import { allUsersReducer, postOfFollowingReducer, userProfileReducer, userReducer } from "./Reducers/User";
-import { likeReducer, myPostsReducer, userPostsReducer } from './Reducers/Book';
+import { allUsersReducer, postOfFollowingReducer, singleBookReducer, userProfileReducer, userReducer } from "./Reducers/User";
+import { allPostsReducer, likeReducer, myPostsReducer, recentlyAddedPostsReducer, trendingPostsReducer, userPostsReducer } from './Reducers/Book';
 const initialState={}
 
 
@@ -17,7 +17,12 @@ const store=configureStore({
         like:likeReducer,
         myPosts:myPostsReducer,
         userProfile:userProfileReducer,
-        userPosts:userPostsReducer
+        userPosts:userPostsReducer,
+        allPosts:allPostsReducer,
+        book:singleBookReducer,
+        reccentlyAddedPosts:recentlyAddedPostsReducer,
+        trendingPosts:trendingPostsReducer
+
     }
 
 })

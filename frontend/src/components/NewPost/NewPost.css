@@ -1,49 +1,125 @@
 .newPost {
-    min-height: 100vh;
-    background-image: linear-gradient(to right, #fff5bc, #cec1ff);
-  
+    min-height: 91.8vh;
+    background-color: #d1e0f0;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2vmax;
+    padding: 4.3vmax;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    /* padding-right:70px; */
   }
   
   .newPostForm {
+    
     background-color: white;
-    height: 100%;
-    width: 50%;
-    border-radius: 30px;
+    height: 80%;
+    width: 35%;
+    /* border-radius: 30px; */
     box-sizing: border-box;
     padding: 2vmax;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
+  .imageContainer{
+    width: 228px;
+    height: 249px;
+    overflow: hidden;
+    border: 4px solid #ccc;
+}
   
-  .newPostForm > img {
+  
+  .imageContainer > img {
     width: 100%;
-    object-fit: cover;
+  height: 100%;
+  object-fit: contain; /* Preserve aspect ratio while filling the container */
+  display: block;
   }
-  .newPostForm > h3 {
+  .newPostForm > h2 {
     margin: 2vmax;
   }
   
   .newPostForm > input[type="text"] {
     width: 100%;
     padding: 1vmax;
+    border-radius: 15px;
+    border: 1px solid #767171;
+    outline: none;
+    font: 100 1.2rem "Roboto", sans-serif;
+    margin: 10px;
+  }
+  
+  .newPostForm > input[type="file"] {
+    border-radius: 5px;
+    margin: 2vmax;
+    margin: 10px;
+  }
+  
+  .newPostForm > input[type="file"]::-webkit-file-upload-button {
+    background-color: rgb(38, 63, 173);
+    color: white;
+    width: 60%;
+    padding: 0.5vmax;
+    border-radius: 30px;
+    border: none;
+    font: 100 1.2rem "Roboto", sans-serif;
+    margin: 10px;
+  }
+
+  .newPostForm2 {
+    background-color: white;
+    /* height: 80%; */
+    height: 548px;
+    width: 35%;
+    /* border-radius: 30px; */
+    box-sizing: border-box;
+    padding: 2vmax;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* align-items: stretch; */
+  }
+  .newPostForm2 > h2 {
+    margin: 2vmax;
+  }
+  
+  .newPostForm2 > input[type="text"] {
+    width: 100%;
+    padding: 1vmax;
+    border-radius: 15px;
+    border: 1px solid #767171;
+    outline: none;
+    font: 100 1.2rem "Roboto", sans-serif;
+    margin: 10px;
+  }
+  .newPostForm2 > select {
+    width: 100%;
+    padding: 1vmax;
+    border-radius: 15px;
+    border: 1px solid #f5f1f1;
+    border: none;
+    outline: none;
+    font: 100 1.2rem "Roboto", sans-serif;
+    margin-left: -40px;
+    margin: 10px;
+  }
+  .newPostForm2 > select > option{
+    width: 100%;
+    padding: 1vmax;
     border-radius: 30px;
     border: none;
     outline: none;
     font: 100 1.2rem "Roboto", sans-serif;
+    margin-left: -40px;
   }
   
-  .newPostForm > input[type="file"] {
-    border-radius: 30px;
-    margin: 2vmax;
-  }
+ 
   
-  .newPostForm > input[type="file"]::-webkit-file-upload-button {
+  .newPostForm2 > input[type="file"]::-webkit-file-upload-button {
     background-color: rgb(38, 63, 173);
     color: white;
     width: 100%;
@@ -51,7 +127,11 @@
     border-radius: 30px;
     border: none;
     font: 100 1.2rem "Roboto", sans-serif;
+    margin: 10px;
+    position: relative;
+    top: 100px;
   }
+
   
   @media screen and (max-width: 600px) {
     .newPostForm {
@@ -66,9 +146,12 @@
     }
     .newPostForm > input[type="file"] {
       width: 100%;
+      
     }
   
     .newPostForm > input[type="file"]::-webkit-file-upload-button {
       width: 70%;
     }
   }
+
+ 

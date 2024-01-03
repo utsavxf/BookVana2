@@ -1,36 +1,103 @@
 .post {
-    width: 60%;
+    width: 30%;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     padding: 0 1vmax 2vmax;
     margin: 2vmax;
+    height: 484px;
+    margin-right: 145px;
+    /* width: calc(50% - 20px); */
+    transition: transform 0.3s ease;
+  }
+
+  .post:hover{
+    transform: scale(1.05);
   }
   
+    
+  .homeBook:hover {
+    transform: scale(1.05);
+  }
+  
+
   .postHeader {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    padding: 1vmax;
+    justify-content:space-between;
+    padding: 0vmax;
   }
   .postHeader > button {
     border-radius: 100%;
     color: rgba(0, 0, 0, 0.582);
   }
-  
-  .post > img {
-    width: 100%;
+
+  .user{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
   }
+  
+  
+
+  .imageContainer{
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border: 2px solid #edc0c0;
+    margin-left: 15px;
+    /* position: relative; */
+}
+
+.imageContainer > .homeBook {
+  /* If using React Router's Link component */
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.imageContainer > .homeBook > img {
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+  /* .imageContainer > img {
+    width: 100%;
+    height: 100%;
+  object-fit: cover; 
+  display: block;
+  }  */
   
   .postDetails {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     padding: 1vmax;
   }
   
   .postDetails > a {
     text-decoration: none;
     color: rgb(0, 0, 0);
-    margin: 1vmax;
+    margin: vmax;
+  }
+
+  .pricedetails{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .second{
+    font-size: 35px;
+    /* border: 2px solid red; */
+    border-radius: 50px;
+    color: black;
+    background: rgb(34,193,195);
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(197,239,81,0.7708333333333334) 76%, rgba(248,253,45,0.38707983193277307) 100%);
+    position: relative;
+    left: 70px;
   }
   
   .postFooter > button {
@@ -38,6 +105,8 @@
     margin: 0 1vmax;
     border-radius: 100%;
     transition: all 0.3s;
+    position: relative;
+    top: -15px;
   }
   
   .postFooter > button:hover {
@@ -57,13 +126,66 @@
     display: flex;
     margin: 1vmax;
   }
-  .commentForm > input {
+  .DialogBoxUpdate {
+    min-width: 500px;
+    height: 100vh;
+    padding: 2vmax;
+  }
+  .commentFormUpdate {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem;
+    width: 100%;
+  }
+  .commentFormUpdate > input {
     width: 100%;
     padding: 1vmax 2vmax;
     outline: none;
     border: 1px solid rgba(0, 0, 0, 0.288);
     border-radius: 30px 0 0 30px;
     font: 100 1vmax "Roboto", sans-serif;
+  }
+
+   .inputcomponent{
+    width: 100%;
+    padding: 1rem;
+    /* margin: 14px; */
+    display: flex;
+   }
+   .inputcomponent input{
+    width: 70%;
+    padding: 1rem;
+    /* margin: 14px; */
+    display: flex;
+    border-radius: 300px;
+   }
+
+   .inputcomponent h4{
+    right: 15px;
+    width: 30%;
+    font-size: 23px;
+    position: relative;
+   }
+   .inputcomponent select{
+    width: 70%;
+    border-radius: 30px;
+    font-size: 15px;
+    height: 48px;
+}
+   
+
+  .commentFormUpdate > button {
+    width: 6%;
+    border-radius: 25px;
+    font-size: 13px;
+    position: relative;
+    left: 214px;
+    top: 12px;
+  }
+
+  .commentForm > input {
+    width: 100%;
+    font-size: 17px;
   }
   .commentForm > button {
     border-radius: 0%;

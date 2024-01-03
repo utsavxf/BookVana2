@@ -120,3 +120,20 @@ export const userProfileReducer = createReducer(initialState, {
   },
 });
 
+export const singleBookReducer = createReducer(initialState, {
+  singleBookRequest: (state) => {
+    state.loading = true;
+  },
+  singleBookSuccess: (state, action) => {
+    state.loading = false;
+    state.book = action.payload;
+  },
+  singleBookFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
+  clearErrors: (state) => {
+    state.error = null;
+  },
+});
+

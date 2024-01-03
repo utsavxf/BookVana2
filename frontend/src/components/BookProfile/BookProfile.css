@@ -1,0 +1,153 @@
+/* *{
+    background-image: linear-gradient(to right, #fff5bc, #cec1ff);
+} */
+
+.homeContainer{
+    box-sizing: border-box;
+    display: flex;
+    /* grid-template-columns: 1fr 400px; */
+
+    /* height: 91.93vh; */
+    width: 100%;
+    /* background-image: linear-gradient(to right, #fff5bc, #cec1ff); */
+    background: white;
+    display: flex;
+    flex-direction: column;
+    /* overflow-y: auto; */
+    /* margin: 3rem; */
+}
+
+.homecomponent{
+padding: 3rem;
+background-color: #E9F1FA;
+overflow-y: auto;
+}
+
+.bookFirst{
+    /* background-color: red; */
+    display: flex;
+    display: row;
+    height: 70%;
+}
+
+.bookleft{
+    width: 50%;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bookright{
+    width: 50%;
+    /* background-color: black; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.description{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    font-size: 20px;
+    width: 100%;
+}
+.about-heading {
+    font-weight: 1000;
+    font-size: 25px;
+  }
+  
+  .description-content {
+    margin-left: 10px;
+    position: relative;
+    top: 3px;
+  }
+  .category{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 50px;
+    font-size: 20px;
+    width: 100%;
+}
+  .language{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 50px;
+    font-size: 20px;
+    width: 100%;
+}
+  .binding{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 50px;
+    font-size: 20px;
+    width: 100%;
+}
+  .price{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 50px;
+    font-size: 20px;
+    width: 100%;
+}
+  .likes{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 50px;
+    font-size: 20px;
+    width: 100%;
+}
+
+
+
+/* .bookright>div{
+    margin: 10px;
+} */
+
+.bookpehla{
+    width: 86%;
+}
+
+.titleAndAuthor{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    position: relative;
+    left: 50px;
+}
+
+.title{
+    font-size: 26px;
+    position: relative;
+    top: -22px;
+    /* left: 65px; */
+}
+
+.author{
+    font-size: 19px;
+    position: relative;
+    top: -9px;
+}
+
+
+
+.bookSecond{
+display: flex;
+flex-direction: column;
+}
+
+.commentHeading{
+    font-size: 25px;
+    color: red;
+    margin-top: 15px;
+    /* display: flex; */
+    align-self: center;
+}
+
+

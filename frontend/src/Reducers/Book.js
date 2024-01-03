@@ -51,14 +51,14 @@ export const likeReducer = createReducer(initialState, {
     state.error = action.payload;
   },
 
-  updateCaptionRequest: (state) => {
+  updateBookRequest: (state) => {
     state.loading = true;
   },
-  updateCaptionSuccess: (state, action) => {
+  updateBookSuccess: (state, action) => {
     state.loading = false;
     state.message = action.payload;
   },
-  updateCaptionFailure: (state, action) => {
+  updateBookFailure: (state, action) => {
     state.loading = false;
     state.error = action.payload;
   },
@@ -181,6 +181,58 @@ export const userPostsReducer = createReducer(initialState, {
     state.posts = action.payload;
   },
   userPostsFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
+  clearErrors: (state) => {
+    state.error = null;
+  },
+});
+
+
+//ALL BOOKS EXCEPT THAT OF THE USER ITSELF
+
+export const allPostsReducer = createReducer(initialState, {
+  allPostsRequest: (state) => {
+    state.loading = true;
+  },
+  allPostsSuccess: (state, action) => {
+    state.loading = false;
+    state.posts = action.payload;
+  },
+  allPostsFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
+  clearErrors: (state) => {
+    state.error = null;
+  },
+});
+export const recentlyAddedPostsReducer = createReducer(initialState, {
+  recentlyAddedPostsRequest: (state) => {
+    state.loading = true;
+  },
+  recentlyAddedPostsSuccess: (state, action) => {
+    state.loading = false;
+    state.posts = action.payload;
+  },
+  recentlyAddedPostsFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  },
+  clearErrors: (state) => {
+    state.error = null;
+  },
+});
+export const trendingPostsReducer = createReducer(initialState, {
+  trendingPostsRequest: (state) => {
+    state.loading = true;
+  },
+  trendingPostsSuccess: (state, action) => {
+    state.loading = false;
+    state.posts = action.payload;
+  },
+  trendingPostsFailure: (state, action) => {
     state.loading = false;
     state.error = action.payload;
   },

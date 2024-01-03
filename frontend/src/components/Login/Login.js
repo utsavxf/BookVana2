@@ -3,7 +3,7 @@ import "./Login.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import { Typography, Button } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../Actions/User";
 
@@ -17,10 +17,12 @@ const Login = () => {
   const {error}=useSelector((state)=>state.user);
   const {message}=useSelector((state)=>state.like);
 
-  const loginHandler=(e)=>{
-     e.preventDefault();  //so that upon submitting the form ,it won't get reloaded
+  const navigate = useNavigate();
 
-     dispatch(loginUser(email,password))
+  const loginHandler=async(e)=>{
+     e.preventDefault();  //so that upon submitting the form ,it won't get reloaded
+     await dispatch(loginUser(email,password))
+     navigate("/")
   }
 
   useEffect(()=>{

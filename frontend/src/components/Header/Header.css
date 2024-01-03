@@ -4,7 +4,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /* background-color:  #E9F1FA; */
+    background-color: #0ab3a3;
+    
   }
+
+  .background1{
+    /* background: rgba(0, 0, 0, 0.7) url('https://media.istockphoto.com/id/476111806/vector/rose-quartz-and-serenity-minimal-modern-graphic-art-stock-background.jpg?s=612x612&w=0&k=20&c=C9PfPALwzc1-fChIQ2NSpCkA1b4vi9odYECNumGBlEA='); */
+    /* background: rgba(0, 0, 0, 0.7) url('https://media.istockphoto.com/id/1414659644/photo/blue-background-blue-substrate-light-blue-background-blue-cloudless-sky.jpg?s=612x612&w=0&k=20&c=nKL6Rs-QpZlQlP76bWqhOCauTbla62IN4QXZp12csl4='); */
+    background-size: cover;
+    background-blend-mode: darken;
+}
   
   .header > a {
     width: 2vmax;

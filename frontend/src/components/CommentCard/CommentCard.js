@@ -1,11 +1,11 @@
 import { Button, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./CommentCard.css";
 import { Delete } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCommentonPost } from "../../Actions/Book";
-import { getFollowingPosts } from "../../Actions/User";
+import { getAllPosts, getFollowingPosts, getMyPosts, getRecentlyAddedBook, getSingleBook, getTrendingBook } from "../../Actions/User";
 
 
 const CommentCard = ({
@@ -21,17 +21,27 @@ const CommentCard = ({
   const dispatch = useDispatch();
 
   const deleteCommentHandle = () => {
+    
+    
     dispatch(deleteCommentonPost(bookId, commentId));
 
     if (isAccount) {
-       console.log('Bring me my Posts');
+       dispatch(getMyPosts());
+       dispatch(getSingleBook(bookId));
+       dispatch(getTrendingBook());
+       dispatch(getRecentlyAddedBook())
        
     } else {
-      dispatch(getFollowingPosts());
+      dispatch(getAllPosts());
+      dispatch(getSingleBook(bookId));
     }
   };
 
 
+   useEffect(()=>{
+    console.log(avatar);
+        
+   })
 
 
 

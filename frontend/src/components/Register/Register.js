@@ -1,7 +1,7 @@
 import { Avatar, Typography, Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Register.css";
 import { loadUser, registerUser } from "../../Actions/User";
 import { ToastContainer, toast } from 'react-toastify';
@@ -33,10 +33,13 @@ const Register = () => {
     };
   };
 
+  const navigate=useNavigate();
+
   const submitHandler =async(e) => {
     e.preventDefault();
     await dispatch(registerUser(name, email, password, avatar,phone));
     setRegistered(true);
+    navigate("/")
     // dispatch(loadUser())
   };
 
