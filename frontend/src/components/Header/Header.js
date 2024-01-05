@@ -26,6 +26,7 @@ const Header = () => {
 
   return (
     <div className="header dark:bg-darknav">
+      <span className='relative right-60 text-xl font-cursive '>BookVana</span>
     <Link to="/" onClick={() => setTab("/")}>
       {tab === "/" ? <Home className='dark:bg-white' style={{ color: "black" }} /> : <HomeOutlined className='dark:color-white' />}
     </Link>
@@ -61,7 +62,7 @@ const Header = () => {
         <AccountCircleOutlined />
       )}
     </Link>
-    {/* <button
+    <button
         className={` ml-10 flex items-center justify-center rounded-full cursor-pointer p-1 -mt-1  ${mode==="light"?"bg-dark text-light":"bg-light text-dark"}`}
          onClick={()=>setMode(mode=="light"?"dark":"light")}
         >
@@ -70,7 +71,7 @@ const Header = () => {
             <SunIcon className={"fill-dark"}/>:
             <MoonIcon className={"fill-dark"}/>
           }
-        </button> */}
+        </button>
   </div>
   )
 }

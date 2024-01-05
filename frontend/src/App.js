@@ -20,6 +20,7 @@ import Search from './components/Search/Search';
 import NotFound from './components/NotFound/NotFound';
 import BookProfile from './components/BookProfile/BookProfile';
 import SearchBook from './components/SearchBook/SearchBook';
+import Footer from './components/Footer/Footer';
 
 
 
@@ -59,6 +60,7 @@ function App() {
       <Route path="*" element={<NotFound/> } />
 
       </Routes>
+      {/* <Footer/> */}
 
     </Router>
 

@@ -92,3 +92,14 @@
       min-height: 90vh;
     }
   }
+
+  .imagesection{
+    background-color:#d5ededd1 ;
+    margin-left: -15px;
+    box-shadow :0 6px 8px 0 rgba(92, 173, 119, 0.2)
+  }
+
+  .imagesection h1{
+    font-family: monospace;
+    color: #d23a3a;
+  }

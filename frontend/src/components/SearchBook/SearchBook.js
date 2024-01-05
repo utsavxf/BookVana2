@@ -9,16 +9,52 @@ import "./SearchBook.css";
 import Book4 from "../Book4/Book4";
 import Loader from "../Loader/Loader";
 import Transition from "../Transition";
+import ReactPaginate from "react-paginate"
 
 const SearchBook = () => {
   const [name, setName] = useState("");
-
   const { posts, loading } = useSelector((state) => state.allPosts);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [category, setCategory] = useState("")
   const [language, setLanguage] = useState("")
   const [binding, setBinding] = useState("")
   const [priceRange, setPriceRange] = useState(0);
+  // state for pagination
+  const [pageNumber,setPageNumber]=useState(0)
+  const booksPerPage=15;
+  const booksVisited=pageNumber * booksPerPage
+  const pageCount=Math.ceil(posts &&  posts.length / booksPerPage)
+  
+  //ez logic and maths
+  const displayBooks = () => {
+    return (
+      (name ? filteredPosts : posts)?.slice(booksVisited, booksVisited + booksPerPage).map((book) => (
+        <Book1
+          key={book._id}
+          bookId={book._id}
+          title={book.title}
+          author={book.author}
+          description={book.description}
+          price={book.price}
+          category={book.category}
+          language={book.language}
+          binding={book.binding}
+          bookImage={book.image.url}
+          likes={book.likes}
+          comments={book.comments}
+          ownerImage={book.owner.avatar.url}
+          ownerName={book.owner.name}
+          ownerId={book.owner._id}
+        />
+      ))
+    );
+  };
+
+  const changePage=({selected})=>{
+    // selected is actually the number that we want to move to
+    setPageNumber(selected)
+  }
+
 
   const dispatch = useDispatch();
 
@@ -166,29 +202,18 @@ const SearchBook = () => {
             </div>
           </div>
           <div className="sbright">
-            {(name?filteredPosts:posts)?.length > 0 ? (
-              (name?filteredPosts:posts).map((book) => (
-                <Book1
-                  key={book._id}
-                  bookId={book._id}
-                  title={book.title}
-                  author={book.author}
-                  description={book.description}
-                  price={book.price}
-                  category={book.category}
-                  language={book.language}
-                  binding={book.binding}
-                  bookImage={book.image.url}
-                  likes={book.likes}
-                  comments={book.comments}
-                  ownerImage={book.owner.avatar.url}
-                  ownerName={book.owner.name}
-                  ownerId={book.owner._id}
-                />
-              ))
-            ) : (
-              <Typography variant="h6">No posts yet</Typography>
-            )}
+            {displayBooks()}
+            <ReactPaginate
+            previousLabel={"Previous"}
+            nextLabel={"Next"}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName={"paginationBtn"}
+            previousLinkClassName={"previousBtn"}
+            nextLinkClassName={"nextBtn"}
+            disabledClassName={"paginationDisabled"}
+            activeClassName={"paginationActive"}
+            />
           </div>
         </div>
 

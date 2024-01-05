@@ -34,6 +34,8 @@ const CommentCard = ({
     } else {
       dispatch(getAllPosts());
       dispatch(getSingleBook(bookId));
+      dispatch(getTrendingBook());
+      dispatch(getRecentlyAddedBook())
     }
   };
 

@@ -42,6 +42,7 @@
   width: 16%;
   /* height: 100vh; */
   background-color: #d1e0f0;
+  /* height: 100vh; */
 
 }
 
@@ -89,4 +90,34 @@
   left: 10px;
   margin-top: 10px;
   /* bottom: 10px; */
+}
+
+/* STYLING FOR PAGINATION */
+.paginationBtn{
+  width: 80%;
+  height: 40px;
+  margin-top: 40px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.paginationBtn a{
+ font-size: 15px;
+ padding: 10px;
+ margin: 8px;
+ border-radius: 5px;
+ border: 1px solid #0ab3a3;
+ color:black;
+ cursor: pointer;
+}
+
+.paginationBtn a:hover{
+  color: black;
+  background-color: #b6cfddd9;
+}
+
+.paginationActive a{
+  color: black;
+  background-color: #0ab3a3;
 }

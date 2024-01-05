@@ -1,0 +1,40 @@
+footer{
+    /* position: relative; */
+    /* top: 60px; */
+    background-color:#232F3E;
+}
+
+
+footer .lastdetails{
+    background-color: #131A22;
+    height:50px;
+}
+
+footer img{
+    display: block;
+    width: 80px;
+    margin: 50px auto auto auto;
+    text-align: center;
+    padding-top: 30px;
+}
+
+footer p{
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: .3px;
+    text-align: center; 
+    margin-top: 20px;
+}
+
+
+@media (max-width:700px){
+    .footer_container .forres{
+        display: none;
+    }
+   
+}
+@media (max-width:500px){
+    .footer_container .forres{
+        display: none;
+    }
+}
